@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import java.io.File;
 
 public class demo_qa_hw {
     @BeforeAll
@@ -26,6 +27,7 @@ public class demo_qa_hw {
         final String monthOfBirth = "February";
         final String subjects = "English";
         final String hobbies = "Reading";
+        File newFile = new File("src/test/java/selenide-logo-big.png");
         final String address = "Narnia";
         final String state = "NCR";
         final String city = "Noida";
@@ -42,7 +44,6 @@ public class demo_qa_hw {
         $("#genterWrapper").$(byText(userGender)).click();
         $("#userNumber").setValue(mobile);
 
-
         $(".react-datepicker__input-container").click();
         $(".react-datepicker__year-select").$(byText(yearOfBirth)).click();
         $(".react-datepicker__month-select").$(byText(monthOfBirth)).click();
@@ -52,24 +53,30 @@ public class demo_qa_hw {
         $("#subjectsInput").setValue(subjects).pressEnter();
 
         $("#hobbiesWrapper").$(byText(hobbies)).click();
-
-        $("#uploadPicture").click();
-
+        $("#uploadPicture").uploadFile(newFile);
         $("#currentAddress").setValue(address);
 
+        $("#state").click();
+        $("#state").$(byText(state)).click();
 
+        $("#city").click();
+        $("#city").$(byText(city)).click();
 
+        $("#submit").click();
 
+        //Проверки содержимого:
+        $(".table-responsive").shouldHave(
+                text("Anna Volkova"),
+                text("anna@gmail.com"),
+                text("Male"),
+                text("12345678901"),
+                text("15 February,1998"),
+                text("English"),
+                text("Reading"),
+                text("selenide-logo-big.png"),
+                text("Narnia"),
+                text("NCR Noida"));
 
-
-
-        //       $("#permanentAddress").setValue("Another address 1");
-        //       $("#submit").click();
-
-//        $("#output").$("#name").shouldHave(text("Alex Egorov"));
-        //       $("#output #name").shouldHave(text("Alex Egorov"));
-        //       $("#output #email").shouldHave(text("alex@egorov.com"));
-        //       $("#output #currentAddress").shouldHave(text("Some address 1"));
-        //      $("#output #permanentAddress").shouldHave(text("Another address 1"));
     }
 }
+
