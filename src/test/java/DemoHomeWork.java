@@ -5,9 +5,8 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import java.io.File;
 
-public class demo_qa_hw {
+public class DemoHomeWork {
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com/";
@@ -16,18 +15,19 @@ public class demo_qa_hw {
     }
 
     @Test
-    void FormTest() {
+    void formTest() {
 
         final String firstName = "Anna";
         final String lastName = "Volkova";
         final String email = "anna@gmail.com";
         final String userGender = "Male";
-        final String mobile = "12345678901";
+        final String mobile = "1234567890";
         final String yearOfBirth = "1988";
         final String monthOfBirth = "February";
+        final int dayOfBirth = 15;
+        final String filePath = "selenide-logo-big.png";
         final String subjects = "English";
         final String hobbies = "Reading";
-        File newFile = new File("src/test/java/selenide-logo-big.png");
         final String address = "Narnia";
         final String state = "NCR";
         final String city = "Noida";
@@ -53,7 +53,7 @@ public class demo_qa_hw {
         $("#subjectsInput").setValue(subjects).pressEnter();
 
         $("#hobbiesWrapper").$(byText(hobbies)).click();
-        $("#uploadPicture").uploadFile(newFile);
+        $("#uploadPicture").uploadFromClasspath(filePath);
         $("#currentAddress").setValue(address);
 
         $("#state").click();
@@ -65,18 +65,17 @@ public class demo_qa_hw {
         $("#submit").click();
 
         //Проверки содержимого:
-        $(".table-responsive").shouldHave(
-                text("Anna Volkova"),
-                text("anna@gmail.com"),
-                text("Male"),
-                text("12345678901"),
-                text("15 February,1998"),
-                text("English"),
-                text("Reading"),
-                text("selenide-logo-big.png"),
-                text("Narnia"),
-                text("NCR Noida"));
-
+        $(".modal-content").shouldHave
+                                            (text(firstName + " " + lastName) ,
+                                            text(email),
+                                            text(userGender),
+                                            text(mobile),
+                                            text(dayOfBirth+" "+monthOfBirth+","+yearOfBirth),
+                                            text(subjects),
+                                            text(hobbies),
+                                            text(filePath),
+                                            text(address),
+                                            text(state+" "+city));
     }
 }
 
