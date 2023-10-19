@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-import pages.TestBase;
 
 public class SuccessfulRegistration extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
@@ -24,16 +23,16 @@ public class SuccessfulRegistration extends TestBase {
                 .clickOnTheRegistrationButton();
 
 
-        registrationPage.checkResult("Student Name", "Anna Volkova")
-                .checkResult("Student Email", "anna@gmail.com")
-                .checkResult("Gender", "Male")
-                .checkResult("Mobile", "1234567890")
-                .checkResult("Date of Birth", "15 February,1988")
-                .checkResult("Subjects", "English")
-                .checkResult("Hobbies", "Reading")
-                .checkResult("Picture", "selenide-logo-big.png")
-                .checkResult("Address", "Narnia")
-                .checkResult("State and City", "NCR Noida");
+        registrationPage.checkResultTest("Student Name", "Anna Volkova")
+                .checkResultTest("Student Email", "anna@gmail.com")
+                .checkResultTest("Gender", "Male")
+                .checkResultTest("Mobile", "1234567890")
+                .checkResultTest("Date of Birth", "15 February,1988")
+                .checkResultTest("Subjects", "English")
+                .checkResultTest("Hobbies", "Reading")
+                .checkResultTest("Picture", "selenide-logo-big.png")
+                .checkResultTest("Address", "Narnia")
+                .checkResultTest("State and City", "NCR Noida");
 
     }
 }

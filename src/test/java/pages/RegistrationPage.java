@@ -1,8 +1,8 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import components.CalendarComponent;
-import components.ResultsModal;
+import pages.components.CalendarComponent;
+import pages.components.ResultsModal;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -122,9 +122,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage checkResult(String key, String value) {
-        $(".modal-content").$(byText(key)).parent()
-                .shouldHave(text(value));
+    public RegistrationPage checkResultTest(String key, String value) {
+        resultsModal.checkResult(key, value);
 
         return this;
     }
