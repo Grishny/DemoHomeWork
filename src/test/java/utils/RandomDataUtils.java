@@ -30,20 +30,10 @@ public class RandomDataUtils {
         return getRandomString(10) + "@mail.ru";
     }
 
-    public static int getRandomInt(int min, int max) {
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
-    }
-
     public String randomGenders(){
         String[] genders = {"Male", "Female", "Other"};
 
-        return getRandomItemFromArray(genders);
-    }
-
-    public String getRandomItemFromArray(String[] array){
-        int index = getRandomInt(0, array.length - 1);
-
-        return array[index];
+        return faker.options().nextElement(genders);
     }
 
     public String randomNumber(){

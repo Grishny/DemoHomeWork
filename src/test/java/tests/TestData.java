@@ -15,6 +15,7 @@ public class TestData {
     public String yearOfBirth = utils.randomYearOfBirth();
     public String subjects = utils.randomSubjects();
     public String hobbies = utils.randomHobbies();
+    public String img = "selenide-logo-big.png";
     public String address = utils.randomAddress();
     public String state = utils.randomState();
     public String city = utils.randomCity(state);

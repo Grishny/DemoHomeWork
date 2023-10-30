@@ -17,7 +17,7 @@ public class SuccessfulRegistrationTest extends TestBase {
                 .setDateOfBirth(data.dayOfBirth, data.monthOfBirth, data.yearOfBirth)
                 .setSubjects(data.subjects)
                 .setHobbies(data.hobbies)
-                .setPicture("img/selenide-logo-big.png")
+                .setPicture("img/" + data.img)
                 .setAddress(data.address)
                 .setState(data.state)
                 .setCity(data.city)
@@ -31,7 +31,7 @@ public class SuccessfulRegistrationTest extends TestBase {
                 .checkResultTest("Date of Birth", data.dayOfBirth + " " + data.monthOfBirth + "," + data.yearOfBirth)
                 .checkResultTest("Subjects", data.subjects)
                 .checkResultTest("Hobbies", data.hobbies)
-                .checkResultTest("Picture", "selenide-logo-big.png")
+                .checkResultTest("Picture", data.img)
                 .checkResultTest("Address", data.address)
                 .checkResultTest("State and City", data.state + " " + data.city);
 
